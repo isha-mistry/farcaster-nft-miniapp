@@ -1,0 +1,24 @@
+{
+    "frame": {
+      "version": "1",
+      "name": "Farcaster Arbitrum Mini-App Starter",
+      "iconUrl": "URL_TO_YOUR_APP_ICON",
+      "homeUrl": "URL_TO_YOUR_APP_URL",
+      "splashImageUrl": "URL_TO_YOUR_SPLASH_IMAGE",
+      "splashBackgroundColor": "#0d223a",
+      "subtitle": "Starter template for building your own Farcaster Mini-App integrated with Arbitrum Stylus.",
+      "description": "Starter template for building your own Farcaster Mini-App integrated with Arbitrum Stylus.",
+      "primaryCategory": "education",
+      "tags": ["arbitrum", "farcaster", "miniapp", "starter"],
+      "requiredChains": ["eip155:42161"],
+      "requiredCapabilities": [
+        "actions.composeCast",
+        "wallet.getEthereumProvider"
+      ]
+    },
+      "accountAssociation": {
+      "header": "YOUR_HEADER",
+      "payload": "YOUR_PAYLOAD",
+      "signature": "YOUR_SIGNATURE"
+    }
+  }
