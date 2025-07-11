@@ -22,7 +22,6 @@ A modern, full-stack starter template for building your own [Farcaster Mini-App]
 - **Minimal, production-ready React (Vite + Tailwind) frontend**
 - **Wallet connection** (wagmi + viem) with support for Farcaster Frame and browser wallets
 - **Arbitrum Stylus NFT contract** (Rust, OpenZeppelin crate, ERC721)
-- **Event-based NFT discovery** (no need for full ERC721 ABI)
 - **Easy contract ABI/address injection**
 - **Farcaster manifest and frame meta integration**
 - **Simple UI:** Connect wallet, mint NFT, view NFT gallery, share to Farcaster

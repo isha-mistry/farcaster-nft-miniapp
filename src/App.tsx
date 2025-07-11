@@ -10,7 +10,7 @@ import SampleNFTAbi from "./abi/SampleNFT.json"; // Minimal ERC721 ABI with Tran
 
 // Address of the deployed Stylus (Arbitrum) NFT contract
 // Update this after deploying your own contract
-const CONTRACT_ADDRESS = "0x1d55838a9ec169488d360783d65e6cd985007b72";
+const CONTRACT_ADDRESS = "0xc2c0c3398915a2d2e9c33c186abfef3192ee25e8";
 
 import { useState } from "react";
 import { publicClient } from "./hooks/usePublicClient"; // viem public client for low-level RPC
@@ -73,11 +73,9 @@ export default function App() {
             // Debug: Log the raw tokenUri
             console.log('Raw tokenURI for tokenId', tokenId.toString(), ':', tokenUri);
             let meta = { image: '', name: '', description: '' };
-            if (typeof tokenUri === 'string' && tokenUri.startsWith('data:application/json')) {
+            if (typeof tokenUri === 'string') {
               try {
-                const encoded = tokenUri.split(',')[1];
-                const jsonStr = decodeURIComponent(encoded);
-                meta = JSON.parse(jsonStr);
+                meta = JSON.parse(tokenUri);
               } catch (e) {
                 console.error('JSON parse error for tokenURI:', e, tokenUri);
               }
