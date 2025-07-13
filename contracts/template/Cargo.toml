@@ -3,8 +3,8 @@ name = "farcaster_mini_app_starter_contract"
 version = "0.1.0"
 edition = "2021"
 license = "MIT OR Apache-2.0"
-homepage = "https://github.com/hummusonrails/farcaster-arb-miniapp-starter"
-repository = "https://github.com/hummusonrails/farcaster-arb-miniapp-starter"
+homepage = "https://github.com/hummusonrails/farcaster-arbitrum-miniapp-starter"
+repository = "https://github.com/hummusonrails/farcaster-arbitrum-miniapp-starter"
 keywords = ["arbitrum", "ethereum", "stylus", "alloy"]
 description = "Starter template for building your own Farcaster Mini-App integrated with Arbitrum Stylus."
 
