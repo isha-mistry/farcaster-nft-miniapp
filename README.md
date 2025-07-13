@@ -30,8 +30,8 @@ A modern, full-stack starter template for building your own [Farcaster Mini-App]
 
 ```bash
 # 1. Clone this template
-git clone https://github.com/hummusonrails/farcaster-arb-miniapp-starter.git
-cd farcaster-arb-miniapp-starter
+git clone https://github.com/hummusonrails/farcaster-arbitrum-miniapp-starter.git
+cd farcaster-arbitrum-miniapp-starter
 
 # 2. Install dependencies
 pnpm install
@@ -114,7 +114,7 @@ pnpm --filter scripts fund
 ## 🧩 File Structure
 
 ```
-farcaster-arb-miniapp-starter/
+farcaster-arbitrum-miniapp-starter/
 ├── contracts/                  # Stylus (Rust) smart contracts
 │   └── template/
 │       ├── src/lib.rs          # NFT contract logic (ERC721)
