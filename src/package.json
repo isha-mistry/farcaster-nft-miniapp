@@ -1,0 +1,16 @@
+{
+  "name": "src",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint . --ext .ts,.tsx,.js,.jsx",
+    "test": "echo 'No tests specified' && exit 0"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vite": "^4.0.0",
+    "typescript": "^5.0.0",
+    "eslint": "^8.0.0"
+  }
+}
