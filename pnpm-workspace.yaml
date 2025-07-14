@@ -1,4 +1,4 @@
 packages:
-  - 'src'
+  - 'frontend'
   - 'contracts/template'
   - 'scripts'

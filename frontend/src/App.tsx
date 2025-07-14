@@ -39,7 +39,7 @@ export default function App() {
         // Find the Transfer event ABI
         const transferEvent = SampleNFTAbi.find(
           (e: any) => e.type === "event" && e.name === "Transfer"
-        );
+        ) as any;
         if (!transferEvent) {
           setNfts([]);
           setLoadingNfts(false);
