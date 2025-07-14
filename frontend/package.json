@@ -1,12 +1,12 @@
 {
-    "name": "farcaster-arbitrum-miniapp-starter",
+    "name": "frontend",
     "private": true,
     "version": "0.0.1",
     "type": "module",
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
-        "lint": "biome check src",
+        "lint": "biome check frontend/src",
         "preview": "vite preview"
     },
     "dependencies": {
@@ -25,10 +25,12 @@
     },
     "devDependencies": {
         "@biomejs/biome": "^1.8.0",
+        "@tailwindcss/postcss": "^4.1.11",
         "@types/react": "^18.3.23",
         "@types/react-dom": "^18.3.0",
         "@vitejs/plugin-react": "^4.2.1",
         "@wagmi/cli": "latest",
+        "autoprefixer": "^10.4.21",
         "typescript": "^5.4.5",
         "vite": "^5.2.11"
     }

@@ -41,14 +41,14 @@ cd farcaster-arbitrum-miniapp-starter
 pnpm install
 
 # 3. Run the frontend locally
-pnpm dev
+pnpm --filter frontend dev
 
 # 4. Deploy the template contract (Arbitrum Stylus)
 pnpm --filter contract-template deploy:local
 
 # 5. (Optional) Run other contract scripts, e.g.:
 pnpm --filter contract-template check
-# 6. Update the contract address in src/App.tsx
+# 6. Update the contract address in frontend/src/App.tsx
 CONTRACT_ADDRESS = "PUT_YOUR_CONTRACT_ADDRESS_HERE"
 ```
 
@@ -69,7 +69,7 @@ tunnels:
 ```
 
 - Start your tunnels with `ngrok start --all`.
-- Update your `src/viemChains.ts` to use the HTTPS ngrok URL (e.g. `https://YOUR_NGROK_ID.ngrok.app`) for the RPC URLs.
+- Update your `frontend/src/viemChains.ts` to use the HTTPS ngrok URL (e.g. `https://YOUR_NGROK_ID.ngrok.app`) for the RPC URLs.
 - Make sure your browser wallet (e.g. MetaMask) is also using the ngrok URL as the RPC endpoint for your dev chain.
 - [Read the ngrok docs](https://ngrok.com/docs/) for setup instructions.
 
@@ -128,9 +128,9 @@ pnpm --filter scripts fund
 
 ### 2. **Update the Frontend**
 
-- Place your contract ABI in `src/abi/SampleNFT.json`.
-- Update the contract address in `src/App.tsx` (`CONTRACT_ADDRESS`).
-- Customize UI in `src/App.tsx` and other components as needed.
+- Place your contract ABI in `frontend/src/abi/SampleNFT.json`.
+- Update the contract address in `frontend/src/App.tsx` (`CONTRACT_ADDRESS`).
+- Customize UI in `frontend/src/App.tsx` and other components as needed.
 
 ### 3. **Farcaster Integration**
 
@@ -149,7 +149,7 @@ farcaster-arbitrum-miniapp-starter/
 │       └── README.md
 ├── public/                     # Static assets, Farcaster manifest, NFT images
 │   └── .well-known/farcaster.json
-├── src/
+├── frontend/src/
 │   ├── abi/                    # Contract ABIs (JSON)
 │   ├── App.tsx                 # Main React app
 │   ├── wagmi.ts                # Wagmi config (chains, connectors)
@@ -172,12 +172,12 @@ farcaster-arbitrum-miniapp-starter/
   ```bash
   cargo stylus export-abi --json
   ```
-- Copy the ABI to `src/abi/SampleNFT.json`.
+- Copy the ABI to `frontend/src/abi/SampleNFT.json`.
 
 ### ⚛️ Frontend Customization
 
-- Change branding, app name, and icons in `public/` and inside `src/`.
-- Add or remove UI components in `src/App.tsx`.
+- Change branding, app name, and icons in `public/` and inside `frontend/src/`.
+- Add or remove UI components in `frontend/src/App.tsx`.
 
 ### 🔗 Farcaster & Wallet
 
@@ -204,7 +204,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 A: Yes! The contract provided is only a template. You can modify it to suit your needs.
 
 **Q: How do I update the contract ABI/address?**  
-A: Replace `src/abi/SampleNFT.json` and update `CONTRACT_ADDRESS` in `src/App.tsx`.
+A: Replace `frontend/src/abi/SampleNFT.json` and update `CONTRACT_ADDRESS` in `frontend/src/App.tsx`.
 
 **Q: How do I serve custom NFT images?**  
 A: Place images in `public/` and reference them with a relative path in your contract metadata.

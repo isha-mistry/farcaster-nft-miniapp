@@ -4,7 +4,7 @@
 // Use this hook to interact with the blockchain outside of Wagmi's hooks.
 
 import { createPublicClient, http } from 'viem';
-import { arbitrum, arbitrumSepolia, localhost } from '../viemChains';
+import { arbitrum, localhost } from '../viemChains';
 
 // Detect environment: use Nitro localhost for development, Arbitrum mainnet for production
 const isDev = import.meta.env.MODE === 'development' || import.meta.env.VITE_USE_LOCALHOST === 'true';
