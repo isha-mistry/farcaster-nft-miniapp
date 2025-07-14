@@ -1,6 +1,10 @@
 # Farcaster + Arbitrum Mini-App Starter
 
 <p align="center">
+  <img src="public/miniapp-example.gif" alt="Farcaster Arbitrum Mini-App Example" width="500" />
+</p>
+
+<p align="center">
   <a href="https://github.com/your-org/your-repo/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License: MIT" />
   </a>
@@ -44,10 +48,33 @@ pnpm --filter contract-template deploy:local
 
 # 5. (Optional) Run other contract scripts, e.g.:
 pnpm --filter contract-template check
-
 # 6. Update the contract address in src/App.tsx
 CONTRACT_ADDRESS = "PUT_YOUR_CONTRACT_ADDRESS_HERE"
 ```
+
+## 🧪 Testing Your Miniapp on Farcaster (with ngrok)
+
+You can preview and test your Farcaster Mini-App using the official [Farcaster Mini-App Previewer](https://farcaster.xyz/~/developers/mini-apps/preview). To make your local app accessible, use [ngrok](https://ngrok.com/docs/) to tunnel both your frontend and devnode:
+
+**Sample `ngrok.yml` config:**
+
+```yaml
+tunnels:
+  web5173:
+    proto: http
+    addr: 5173
+  web8547:
+    proto: http
+    addr: 8547
+```
+
+- Start your tunnels with `ngrok start --all`.
+- Update your `src/viemChains.ts` to use the HTTPS ngrok URL (e.g. `https://YOUR_NGROK_ID.ngrok.app`) for the RPC URLs.
+- Make sure your browser wallet (e.g. MetaMask) is also using the ngrok URL as the RPC endpoint for your dev chain.
+- [Read the ngrok docs](https://ngrok.com/docs/) for setup instructions.
+
+Once both tunnels are running, paste your ngrok frontend URL into the Farcaster Mini-App Previewer to test your app from anywhere!
+
 
 ## 💰 Test Wallets & Funding
 

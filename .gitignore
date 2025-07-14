@@ -43,9 +43,6 @@ coverage/
 .idea/
 *.swp
 
-# Ignore ABI exports (optional, if generated)
-abi/
-
 # Ignore generated files
 *.out
 *.bin

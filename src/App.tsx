@@ -129,7 +129,9 @@ export default function App() {
           </button>
         ) : (
           <div className="flex flex-col items-center gap-4 w-full">
-            <div className="mb-2 text-cyan-100 text-sm">Connected: <span className="font-mono">{address}</span></div>
+            <div className="mb-2 text-cyan-100 text-sm w-full flex flex-col items-center">
+  <span className="block w-full truncate font-mono bg-slate-900/70 rounded px-2 py-1 text-cyan-200 text-xs border border-cyan-800/40" title={address} style={{maxWidth:'100%'}}>Connected: {address}</span>
+</div>
             <button
               className="px-6 py-3 rounded-xl bg-green-600 hover:bg-green-700 text-white font-bold w-full"
               onClick={handleMint}
