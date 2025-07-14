@@ -1,6 +1,10 @@
 # Farcaster + Arbitrum Mini-App Starter
 
 <p align="center">
+  <img src="public/miniapp-example.gif" alt="Farcaster Arbitrum Mini-App Example" width="500" />
+</p>
+
+<p align="center">
   <a href="https://github.com/your-org/your-repo/blob/main/LICENSE">
     <img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License: MIT" />
   </a>
