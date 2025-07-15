@@ -1,7 +1,7 @@
 # Farcaster + Arbitrum Mini-App Starter
 
 <p align="center">
-  <img src="public/miniapp-example.gif" alt="Farcaster Arbitrum Mini-App Example" width="500" />
+  <img src="frontend/public/miniapp-example.gif" alt="Farcaster Arbitrum Mini-App Example" width="500" />
 </p>
 
 <p align="center">
