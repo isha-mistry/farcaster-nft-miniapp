@@ -2,7 +2,7 @@
 // Sets up supported chains, connectors, and transports for EVM wallet interaction.
 // Use this config in your app to enable wallet connection and contract calls.
 
-import { farcasterFrame } from "@farcaster/frame-wagmi-connector"; // Farcaster Frame connector for Wagmi
+import { farcasterMiniApp } from "@farcaster/miniapp-wagmi-connector"; // Farcaster MiniApp connector for Wagmi
 import { http, createConfig } from "wagmi"; // Wagmi core utilities
 import { injected } from "@wagmi/connectors"; // Standard browser wallet connector
 import { localhost, arbitrum, arbitrumSepolia } from "./viemChains"; // Supported chains
@@ -25,7 +25,7 @@ const transports = chains.reduce((acc, chain) => {
 // Main Wagmi config used throughout the app
 export const config = createConfig({
   chains,
-  connectors: isDev ? [injected(), farcasterFrame()] : [farcasterFrame()],
+  connectors: isDev ? [injected(), farcasterMiniApp()] : [farcasterMiniApp()],
   transports,
 });
 

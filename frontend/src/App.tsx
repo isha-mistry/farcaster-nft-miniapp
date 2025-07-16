@@ -4,7 +4,7 @@
 // Use this as a template for your own Farcaster miniapp frontend.
 
 import { useEffect } from "react";
-import { sdk } from "@farcaster/frame-sdk"; // Farcaster Frame SDK for social sharing
+import { sdk } from "@farcaster/miniapp-sdk"; // Farcaster MiniApp SDK for social sharing
 import { useAccount, useConnect, useWriteContract, useWaitForTransactionReceipt } from "wagmi"; // Wagmi hooks for EVM wallet and contract interaction
 import SampleNFTAbi from "./abi/SampleNFT.json"; // Minimal ERC721 ABI with Transfer event
 
