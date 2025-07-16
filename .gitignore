@@ -62,6 +62,5 @@ public/.well-known/farcaster.json.local
 *.bak
 
 # Ignore lock files (optional, if not checked in)
-# package-lock.json
+package-lock.json
 yarn.lock
-pnpm-lock.yaml
