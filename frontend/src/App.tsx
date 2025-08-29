@@ -3,6 +3,7 @@
 // This file demonstrates wallet connection, NFT minting, and NFT gallery display using event-based discovery.
 // Use this as a template for your own Farcaster miniapp frontend.
 
+import React from "react";
 import { useEffect } from "react";
 import { sdk } from "@farcaster/miniapp-sdk"; // Farcaster MiniApp SDK for social sharing
 import { useAccount, useConnect, useWriteContract, useWaitForTransactionReceipt } from "wagmi"; // Wagmi hooks for EVM wallet and contract interaction
@@ -11,13 +12,14 @@ import SampleNFTAbi from "./abi/SampleNFT.json"; // Minimal ERC721 ABI with Tran
 // Address of the deployed Stylus (Arbitrum) NFT contract
 // Update this after deploying your own contract
 const CONTRACT_ADDRESS = "0xdb3f4ecb0298238a19ec5afd087c6d9df8041919";
+// const CONTRACT_ADDRESS = "0xc492e3975c7A72dC6242Fb4857887B25Ed363288";
 
 import { useState } from "react";
 import { publicClient } from "./hooks/usePublicClient"; // viem public client for low-level RPC
 
 export default function App() {
   // Wagmi hooks for wallet connection and contract interaction
-  const { isConnected, address } = useAccount();
+  const { isConnected, address, chainId } = useAccount();
   const { connect, connectors, error, status } = useConnect();
   const { writeContract, data: txHash, isPending } = useWriteContract();
   const { isLoading: isConfirming, isSuccess: isMinted } = useWaitForTransactionReceipt({
@@ -26,6 +28,9 @@ export default function App() {
 
   const [nfts, setNfts] = useState<{ tokenId: string; image: string; name: string; description: string }[]>([]);
   const [loadingNfts, setLoadingNfts] = useState(false);
+
+  // Check if user is on the correct network
+  const isCorrectNetwork = chainId === 421614; // Arbitrum Sepolia chain ID
 
   useEffect(() => {
     sdk.actions.ready(); // Farcaster Mini-App SDK ready
@@ -100,6 +105,16 @@ export default function App() {
 
   // Example mint handler for Stylus NFT contract
   const handleMint = () => {
+    // Check if user is on the correct network
+    if (!isConnected || !address) {
+      alert('Please connect your wallet to mint NFTs.');
+      return;
+    }
+    if (!isCorrectNetwork) {
+      alert(`Please switch to Arbitrum Sepolia network to mint NFTs. Current network: ${chainId}`);
+      return;
+    }
+
     writeContract({
       address: CONTRACT_ADDRESS,
       abi: SampleNFTAbi,
@@ -113,6 +128,43 @@ export default function App() {
     sdk.actions.composeCast({
       text: `I just used the Farcaster + Arbitrum mini-app starter!`,
     });
+  };
+
+  // Function to switch to Arbitrum Sepolia network
+  const handleSwitchToArbitrumSepolia = async () => {
+    try {
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: '0x66eed' }], // Arbitrum Sepolia chain ID in hex
+      });
+      alert('Switched to Arbitrum Sepolia network.');
+    } catch (error: any) {
+      if (error.code === 4902) {
+        try {
+          await window.ethereum.request({
+            method: 'wallet_addEthereumChain',
+            params: [
+              {
+                chainId: '0x66eed',
+                chainName: 'Arbitrum Sepolia',
+                rpcUrls: ['https://sepolia-rollup.arbitrum.io/rpc'],
+                blockExplorerUrls: ['https://sepolia.arbiscan.io'],
+                nativeCurrency: {
+                  name: 'Ethereum',
+                  symbol: 'ETH',
+                  decimals: 18,
+                },
+              },
+            ],
+          });
+          alert('Added Arbitrum Sepolia network to your wallet.');
+        } catch (addError: any) {
+          alert(`Failed to add Arbitrum Sepolia network: ${addError.message}`);
+        }
+      } else {
+        alert(`Failed to switch network: ${error.message}`);
+      }
+    }
   };
 
   return (
@@ -130,8 +182,23 @@ export default function App() {
         ) : (
           <div className="flex flex-col items-center gap-4 w-full">
             <div className="mb-2 text-cyan-100 text-sm w-full flex flex-col items-center">
-  <span className="block w-full truncate font-mono bg-slate-900/70 rounded px-2 py-1 text-cyan-200 text-xs border border-cyan-800/40" title={address} style={{maxWidth:'100%'}}>Connected: {address}</span>
-</div>
+              <span className="block w-full truncate font-mono bg-slate-900/70 rounded px-2 py-1 text-cyan-200 text-xs border border-cyan-800/40" title={address} style={{ maxWidth: '100%' }}>Connected: {address}</span>
+
+              {/* Network Status and Switch Button */}
+              <div className="mt-2 flex flex-col items-center gap-2">
+                <div className={`text-xs px-2 py-1 rounded ${isCorrectNetwork ? 'bg-green-600/20 text-green-300' : 'bg-red-600/20 text-red-300'}`}>
+                  {isCorrectNetwork ? '✅ Arbitrum Sepolia' : `❌ Wrong Network (${chainId})`}
+                </div>
+                {!isCorrectNetwork && (
+                  <button
+                    className="px-4 py-2 rounded-lg bg-orange-600 hover:bg-orange-700 text-white text-sm font-medium"
+                    onClick={handleSwitchToArbitrumSepolia}
+                  >
+                    Switch to Arbitrum Sepolia
+                  </button>
+                )}
+              </div>
+            </div>
             <button
               className="px-6 py-3 rounded-xl bg-green-600 hover:bg-green-700 text-white font-bold w-full"
               onClick={handleMint}
